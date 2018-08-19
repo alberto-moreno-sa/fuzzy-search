@@ -34,5 +34,14 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleNameMapper": {
+      "^@app(.*)$": "<rootDir>/src/app$1"
+    }
   }
 }
