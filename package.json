@@ -12,13 +12,14 @@
     "flow-bin": "^0.79.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "react-app-rewired": "^1.5.2"
   },
   "scripts": {
-    "start": "NODE_PATH=./src react-scripts start",
-    "build": "NODE_PATH=./src react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "start": "NODE_PATH=./src react-app-rewired start",
+    "build": "NODE_PATH=./src react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject",
     "precommit": "yarn flow check && lint-staged",
     "flow": "flow",
     "lint": "prettier --write \"./**/*.{js,jsx,json,css,md}\"",
