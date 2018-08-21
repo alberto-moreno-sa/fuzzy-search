@@ -1,26 +1,74 @@
 // @flow
 
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import MenuIcon from '@material-ui/icons/Menu';
-import { StyledMain, StyledIcon, StyledTypography } from './styled';
+import ReactTable from 'react-table';
+import 'react-table/react-table.css';
+import {
+  Segment,
+  Divider,
+  Form,
+  Label,
+  Container,
+  Header,
+  Card
+} from 'semantic-ui-react';
+import SearchForm from '@app/components/Search/SearchForm';
 
 const App = () => (
-  <StyledMain>
-    <AppBar position="static">
-      <Toolbar>
-        <StyledIcon color="inherit" aria-label="Menu">
-          <MenuIcon />
-        </StyledIcon>
-        <StyledTypography variant="title" color="inherit">
-          News
-        </StyledTypography>
-        <Button color="inherit">Login</Button>
-      </Toolbar>
-    </AppBar>
-  </StyledMain>
+  <Segment>
+    <Container fluid>
+      <Header as="h2">Seacrh Fuzzy</Header>
+      <SearchForm>
+        <Form>
+          <Card fluid>
+            <Card.Content>
+              <Form.Field>
+                <label>Search Transactions</label>
+                <SearchForm.Input />
+              </Form.Field>
+              <Divider />
+              <Form.Field>
+                <label>Added keys</label>
+                <SearchForm.InputKeys />
+                <Label pointing>
+                  List of properties that will be searched, they must be some
+                  the following: amount, date or card_last_four
+                </Label>
+              </Form.Field>
+            </Card.Content>
+          </Card>
+        </Form>
+        <Header as="h3">Results</Header>
+        <SearchForm.Results>
+          {data => (
+            <ReactTable
+              data={data}
+              columns={[
+                {
+                  columns: [
+                    {
+                      Header: 'amount',
+                      accessor: 'amount'
+                    },
+                    {
+                      Header: 'date',
+                      accessor: 'date'
+                    },
+                    {
+                      Header: 'card last four',
+                      accessor: 'card_last_four'
+                    }
+                  ]
+                }
+              ]}
+              defaultPageSize={10}
+              className="-striped -highlight"
+            />
+          )}
+        </SearchForm.Results>
+      </SearchForm>
+    </Container>
+  </Segment>
 );
 
 export default App;
