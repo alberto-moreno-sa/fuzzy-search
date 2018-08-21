@@ -28,7 +28,7 @@ const App = () => (
               </Form.Field>
               <Divider />
               <Form.Field>
-                <label>Added keys</label>
+                <label>Keys</label>
                 <SearchForm.InputKeys />
                 <Label pointing>
                   List of properties that will be searched, they must be some
